@@ -7,4 +7,37 @@ describe('quizzer-be routes', () => {
   beforeEach(() => {
     return pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'))
   });
+
+  it('makes a new quiz on POST', async() => {
+    const response = await request(app)
+      .post('/api/quizzes')
+      .send({
+        title: 'Geography',
+        description: 'A geography quiz'
+      });
+
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      title: 'Geography',
+      description: 'A geography quiz'
+    });
+  });
+
+  it('gets all quizzes', async() => {
+    await request(app)
+      .post('/api/quizzes')
+      .send({
+        title: 'Geography',
+        description: 'A geography quiz'
+      });
+
+    const response = await request(app)
+      .get('/api/quizzes');
+
+    expect(response.body).toEqual(expect.arrayContaining([{
+      id: expect.any(String),
+      title: 'Geography',
+      description: 'A geography quiz'
+    }]));
+  });
 });
