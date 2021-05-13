@@ -30,4 +30,15 @@ describe('Quiz routes', () => {
 
     expect(newQuiz).toEqual(foundQuiz[0]);
   });
+
+  it('Finds quiz by id', async() => {
+    const newQuiz = await Quiz.insert({
+      title: 'Geography',
+      description: 'A geography quiz'
+    });
+
+    const foundQuiz = await Quiz.getQuizById(newQuiz.id);
+
+    expect(foundQuiz).toEqual(newQuiz);
+  });
 });
