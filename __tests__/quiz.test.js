@@ -13,7 +13,9 @@ describe('Quiz routes', () => {
       description: 'A geography quiz',
       questions: 'Where am I?',
       correctAnswers: 'Here',
-      incorrectAnswers: 'There'
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
 
     const { rows } = await pool.query(`
@@ -26,10 +28,12 @@ describe('Quiz routes', () => {
   it('Finds all quizzes', async() => {
     const newQuiz = await Quiz.insert({
       title: 'Geography',
-      description: 'A big quiz',
+      description: 'A geography quiz',
       questions: 'Where am I?',
       correctAnswers: 'Here',
-      incorrectAnswers: 'There'
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
 
     const foundQuiz = await Quiz.getAllQuizzes();
@@ -43,7 +47,9 @@ describe('Quiz routes', () => {
       description: 'A geography quiz',
       questions: 'Where am I?',
       correctAnswers: 'Here',
-      incorrectAnswers: 'There'
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
 
     const foundQuiz = await Quiz.getQuizById(newQuiz.id);

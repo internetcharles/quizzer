@@ -6,5 +6,7 @@ CREATE TABLE quizzes (
   description TEXT NOT NULL,
   questions TEXT NOT NULL,
   correct_answers TEXT NOT NULL,
-  incorrect_answers TEXT NOT NULL
+  incorrect_answer1 TEXT NOT NULL,
+  incorrect_answer2 TEXT NOT NULL,
+  incorrect_answer3 TEXT NOT NULL
   );

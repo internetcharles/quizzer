@@ -17,7 +17,9 @@ describe('quizzer-be routes', () => {
         description: 'A geography quiz',
         questions: 'Where am I?',
         correctAnswers: 'Here',
-        incorrectAnswers: 'There'
+        incorrectAnswer1: 'There',
+        incorrectAnswer2: 'Where',
+        incorrectAnswer3: 'Cool'
       });
 
     expect(response.body).toEqual({
@@ -26,7 +28,9 @@ describe('quizzer-be routes', () => {
       description: 'A geography quiz',
       questions: 'Where am I?',
       correctAnswers: 'Here',
-      incorrectAnswers: 'There'
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
   });
 
@@ -38,7 +42,9 @@ describe('quizzer-be routes', () => {
         description: 'A geography quiz',
         questions: 'Where am I?',
         correctAnswers: 'Here',
-        incorrectAnswers: 'There'
+        incorrectAnswer1: 'There',
+        incorrectAnswer2: 'Where',
+        incorrectAnswer3: 'Cool'
       });
 
     const response = await request(app)
@@ -50,7 +56,9 @@ describe('quizzer-be routes', () => {
       description: 'A geography quiz',
       questions: 'Where am I?',
       correctAnswers: 'Here',
-      incorrectAnswers: 'There'
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     }]));
   });
 
@@ -60,7 +68,9 @@ describe('quizzer-be routes', () => {
       description: 'A geography quiz',
       questions: 'Where am I?',
       correctAnswers: 'Here',
-      incorrectAnswers: 'There'
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
 
 
@@ -73,7 +83,9 @@ describe('quizzer-be routes', () => {
       description: 'A geography quiz',
       questions: 'Where am I?',
       correctAnswers: 'Here',
-      incorrectAnswers: 'There'
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
   });
 
