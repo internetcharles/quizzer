@@ -59,5 +59,44 @@ describe('quizzer-be routes', () => {
     });
   });
 
+  it('inserts question via POST', async() => {
+    const response = await request(app)
+      .post('/api/questions')
+      .send({
+        questionText: 'What\'s your name?',
+        correctAnswer: 'Charlie',
+        incorrectAnswers: '[\'Nick\', \'James\', \'Paul\']',
+        quizId: 1,
+      });
+    
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      questionText: 'What\'s your name?',
+      correctAnswer: 'Charlie',
+      incorrectAnswers: '[\'Nick\', \'James\', \'Paul\']',
+      quizId: '1',
+    });
+  });
 
+  it('gets questions by quiz id', async() => {
+    await request(app)
+      .post('/api/questions')
+      .send({
+        questionText: 'What\'s your name?',
+        correctAnswer: 'Charlie',
+        incorrectAnswers: '[\'Nick\', \'James\', \'Paul\']',
+        quizId: 1,
+      });
+
+    const response = await request(app)
+      .get('/api/questions/1');
+        
+    expect(response.body).toEqual([{
+      id: expect.any(String),
+      questionText: 'What\'s your name?',
+      correctAnswer: 'Charlie',
+      incorrectAnswers: '[\'Nick\', \'James\', \'Paul\']',
+      quizId: '1',
+    }]);
+  });
 });

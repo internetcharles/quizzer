@@ -9,8 +9,8 @@ CREATE TABLE quizzes (
 
 CREATE TABLE questions (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  question TEXT NOT NULL,
-  correct_answer TEXT NOT NULL,
-  incorrect_answers VARCHAR(250) NOT NULL,
-  owner_id BIGINT NOT NULL REFERENCES quizzes(id)
+  question_text TEXT NOT NULL,
+  correct_answer VARCHAR(512) NOT NULL,
+  incorrect_answers VARCHAR(1024) NOT NULL,
+  quiz_id BIGINT NOT NULL
 );
