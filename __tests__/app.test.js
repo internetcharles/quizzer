@@ -14,13 +14,19 @@ describe('quizzer-be routes', () => {
       .post('/api/quizzes')
       .send({
         title: 'Geography',
-        description: 'A geography quiz'
+        description: 'A geography quiz',
+        questions: 'Where am I?',
+        correctAnswers: 'Here',
+        incorrectAnswers: 'There'
       });
 
     expect(response.body).toEqual({
       id: expect.any(String),
       title: 'Geography',
-      description: 'A geography quiz'
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswers: 'There'
     });
   });
 
@@ -29,7 +35,10 @@ describe('quizzer-be routes', () => {
       .post('/api/quizzes')
       .send({
         title: 'Geography',
-        description: 'A geography quiz'
+        description: 'A geography quiz',
+        questions: 'Where am I?',
+        correctAnswers: 'Here',
+        incorrectAnswers: 'There'
       });
 
     const response = await request(app)
@@ -38,14 +47,20 @@ describe('quizzer-be routes', () => {
     expect(response.body).toEqual(expect.arrayContaining([{
       id: expect.any(String),
       title: 'Geography',
-      description: 'A geography quiz'
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswers: 'There'
     }]));
   });
 
   it('gets quiz by id', async() => {
     const newQuiz = await Quiz.insert({
       title: 'Geography',
-      description: 'A geography quiz'
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswers: 'There'
     });
 
 
@@ -55,48 +70,12 @@ describe('quizzer-be routes', () => {
     expect(response.body).toEqual({
       id: expect.any(String),
       title: 'Geography',
-      description: 'A geography quiz'
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswers: 'There'
     });
   });
 
-  it('inserts question via POST', async() => {
-    const response = await request(app)
-      .post('/api/questions')
-      .send({
-        questionText: 'What\'s your name?',
-        correctAnswer: 'Charlie',
-        incorrectAnswers: '[\'Nick\', \'James\', \'Paul\']',
-        quizId: 1,
-      });
-    
-    expect(response.body).toEqual({
-      id: expect.any(String),
-      questionText: 'What\'s your name?',
-      correctAnswer: 'Charlie',
-      incorrectAnswers: '[\'Nick\', \'James\', \'Paul\']',
-      quizId: '1',
-    });
-  });
 
-  it('gets questions by quiz id', async() => {
-    await request(app)
-      .post('/api/questions')
-      .send({
-        questionText: 'What\'s your name?',
-        correctAnswer: 'Charlie',
-        incorrectAnswers: '[\'Nick\', \'James\', \'Paul\']',
-        quizId: 1,
-      });
-
-    const response = await request(app)
-      .get('/api/questions/1');
-        
-    expect(response.body).toEqual([{
-      id: expect.any(String),
-      questionText: 'What\'s your name?',
-      correctAnswer: 'Charlie',
-      incorrectAnswers: '[\'Nick\', \'James\', \'Paul\']',
-      quizId: '1',
-    }]);
-  });
 });

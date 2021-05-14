@@ -1,16 +1,10 @@
 DROP TABLE IF EXISTS quizzes CASCADE;
-DROP TABLE IF EXISTS questions CASCADE;
 
 CREATE TABLE quizzes (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   title TEXT NOT NULL,
-  description TEXT NOT NULL
+  description TEXT NOT NULL,
+  questions TEXT NOT NULL,
+  correct_answers TEXT NOT NULL,
+  incorrect_answers TEXT NOT NULL
   );
-
-CREATE TABLE questions (
-  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  question_text TEXT NOT NULL,
-  correct_answer VARCHAR(512) NOT NULL,
-  incorrect_answers VARCHAR(1024) NOT NULL,
-  quiz_id BIGINT NOT NULL
-);
