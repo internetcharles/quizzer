@@ -14,13 +14,23 @@ describe('quizzer-be routes', () => {
       .post('/api/quizzes')
       .send({
         title: 'Geography',
-        description: 'A geography quiz'
+        description: 'A geography quiz',
+        questions: 'Where am I?',
+        correctAnswers: 'Here',
+        incorrectAnswer1: 'There',
+        incorrectAnswer2: 'Where',
+        incorrectAnswer3: 'Cool'
       });
 
     expect(response.body).toEqual({
       id: expect.any(String),
       title: 'Geography',
-      description: 'A geography quiz'
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
   });
 
@@ -29,7 +39,12 @@ describe('quizzer-be routes', () => {
       .post('/api/quizzes')
       .send({
         title: 'Geography',
-        description: 'A geography quiz'
+        description: 'A geography quiz',
+        questions: 'Where am I?',
+        correctAnswers: 'Here',
+        incorrectAnswer1: 'There',
+        incorrectAnswer2: 'Where',
+        incorrectAnswer3: 'Cool'
       });
 
     const response = await request(app)
@@ -38,14 +53,24 @@ describe('quizzer-be routes', () => {
     expect(response.body).toEqual(expect.arrayContaining([{
       id: expect.any(String),
       title: 'Geography',
-      description: 'A geography quiz'
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     }]));
   });
 
   it('gets quiz by id', async() => {
     const newQuiz = await Quiz.insert({
       title: 'Geography',
-      description: 'A geography quiz'
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
 
 
@@ -55,7 +80,12 @@ describe('quizzer-be routes', () => {
     expect(response.body).toEqual({
       id: expect.any(String),
       title: 'Geography',
-      description: 'A geography quiz'
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
     });
   });
 
