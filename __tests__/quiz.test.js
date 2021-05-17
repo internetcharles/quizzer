@@ -56,4 +56,20 @@ describe('Quiz routes', () => {
 
     expect(foundQuiz).toEqual(newQuiz);
   });
+
+  it('Deletes quiz', async() => {
+    const newQuiz = await Quiz.insert({
+      title: 'Geography',
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
+    });
+
+    const deletedQuiz = await Quiz.deleteQuiz(newQuiz.id);
+
+    expect(deletedQuiz).toEqual(newQuiz);
+  })
 });

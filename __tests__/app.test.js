@@ -89,5 +89,29 @@ describe('quizzer-be routes', () => {
     });
   });
 
+  it('deletes quiz on DELETE', async() => {
+    const newQuiz = await Quiz.insert({
+      title: 'Geography',
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
+    });
 
+    const response = await request(app)
+      .delete(`/api/quizzes/${newQuiz.id}`);
+
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      title: 'Geography',
+      description: 'A geography quiz',
+      questions: 'Where am I?',
+      correctAnswers: 'Here',
+      incorrectAnswer1: 'There',
+      incorrectAnswer2: 'Where',
+      incorrectAnswer3: 'Cool'
+    });
+  });
 });
